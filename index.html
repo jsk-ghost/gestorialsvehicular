@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AserCofi | Despacho Contable</title>
+    <title>Gestoría Vehicular LS | Soluciones Corporativas</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -12,17 +12,17 @@
 
 <div id="preloader">
     <div class="preloader-content">
-        <h2 class="preloader-logo">ASER<span>COFI</span></h2>
+        <h2 class="preloader-logo">GESTORÍA<span>LS</span></h2>
         <div class="loader-bar"></div>
     </div>
 </div>
 
 <nav class="navbar">
-    <div class="logo">ASER<span>COFI</span></div>
+    <div class="logo">GESTORÍA<span>LS</span></div>
     <ul class="nav-links">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#contacto" class="nav-cta">Agendar Asesoría</a></li>
+        <li><a href="#contacto" class="nav-cta">Agendar Trámite</a></li>
     </ul>
 </nav>
 
@@ -36,8 +36,8 @@
 
     <div class="hero-content">
         <h1 id="typewriter"></h1>
-        <p>Estrategia fiscal de alto nivel para tu negocio.</p>
-        <a href="#contacto" class="btn-primary">Empezar ahora</a>
+        <p>Soluciones logísticas para flotillas, empresas y particulares.</p>
+        <a href="#contacto" class="btn-primary">Iniciar trámite</a>
     </div>
 
     <a href="#servicios" class="scroll-indicator">
@@ -46,24 +46,36 @@
 </section>
 
 <section id="servicios" class="services">
-    <h2 class="section-title">Nuestros Servicios</h2>
+    <h2 class="section-title">Servicios Integrales</h2>
     <div class="services-particles"></div>
     <div class="grid">
         <div class="card">
-            <h3>Contabilidad General</h3>
-            <p>Gestión financiera impecable para tu tranquilidad.</p>
+            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 15px;">
+                <i class="fas fa-truck-moving"></i>
+            </div>
+            <h3>Vehículos de Carga</h3>
+            <p>Altas, bajas y permisos de ruta para transporte pesado.</p>
         </div>
         <div class="card">
-            <h3>Estrategia Fiscal</h3>
-            <p>Optimización de impuestos cumpliendo la ley.</p>
+            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 15px;">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Trámites Ambientales</h3>
+            <p>Gestión de verificaciones y hologramas exentos.</p>
         </div>
         <div class="card">
-            <h3>Nóminas</h3>
-            <p>Administración eficiente de tu equipo de trabajo.</p>
+            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 15px;">
+                <i class="fas fa-id-card"></i>
+            </div>
+            <h3>Placas</h3>
+            <p>Emplacamiento nuevo, cambios de entidad y altas comerciales.</p>
         </div>
         <div class="card">
-            <h3>Auditoría</h3>
-            <p>Revisión profunda para un crecimiento seguro.</p>
+            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 15px;">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Validación Jurídica</h3>
+            <p>Liberación de adeudos y dictámenes de estatus legal.</p>
         </div>
     </div>
 </section>
@@ -75,29 +87,29 @@
     </div>
 
     <div class="contact-card">
-        <div class="contact-badge">Asesoría Gratuita</div>
-        <h2>Obtén tu asesoría</h2>
-        <p class="contact-subtext">Impulsa tu negocio con soluciones contables y fiscales inteligentes.</p>
+        <div class="contact-badge">Atención Profesional</div>
+        <h2>Inicie su gestión</h2>
+        <p class="contact-subtext">Optimice los tiempos de su negocio delegando sus trámites.</p>
 
         <form class="contact-form" id="contactForm">
             <div class="input-group">
-                <input type="text" name="nombre" id="nombre" required placeholder=" ">
-                <label>Nombre completo</label>
+                <input type="text" id="nombre" required placeholder=" ">
+                <label>Nombre o Razón Social</label>
             </div>
             <div class="input-group">
-                <input type="email" name="email" id="email" required placeholder=" ">
+                <input type="email" id="email" required placeholder=" ">
                 <label>Correo electrónico</label>
             </div>
             <div class="input-group">
-                <input type="tel" name="telefono" id="telefono" required placeholder=" ">
+                <input type="tel" id="telefono" required placeholder=" ">
                 <label>Teléfono</label>
             </div>
-            <textarea name="mensaje" id="mensaje" placeholder="Cuéntanos qué necesitas" rows="4"></textarea>
-            <button type="submit" class="btn-submit">Solicitar Asesoría</button>
+            <textarea id="mensaje" placeholder="Detalle su trámite..." rows="4"></textarea>
+            <button type="submit" class="btn-submit">Solicitar Gestión</button>
         </form>
 
-        <div class="social-links active-socials">
-            <a href="https://wa.me/tu-numero" target="_blank" class="social-icon whatsapp">
+        <div class="social-links">
+            <a href="https://wa.me/5540701518" target="_blank" class="social-icon whatsapp">
                 <i class="fab fa-whatsapp"></i>
             </a>
             <a href="#" target="_blank" class="social-icon facebook">
@@ -108,22 +120,26 @@
 </section>
 
 <footer class="footer">
-    <p>&copy; 2026 AserCofi. Todos los derechos reservados.</p>
+    <p>&copy; 2026 Gestoría LS. Todos los derechos reservados.</p>
 </footer>
 
 <script>
+    // 1. QUITAR PANTALLA DE CARGA
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
         setTimeout(() => {
             preloader.style.opacity = '0';
-            setTimeout(() => { preloader.style.display = 'none'; }, 500);
-            startTypewriter();
+            setTimeout(() => { 
+                preloader.style.display = 'none'; 
+                startTypewriter(); // Empieza las letras cuando se va el negro
+            }, 500);
         }, 2000);
     });
 
+    // 2. EFECTO LETRAS MÁQUINA DE ESCRIBIR
     function startTypewriter() {
-        const text = "Contabilidad inteligente y soluciones.";
-        const speed = 70;
+        const text = "Gestión vehicular corporativa y soluciones eficientes.";
+        const speed = 60;
         let i = 0;
         const target = document.getElementById("typewriter");
         function type() {
@@ -136,31 +152,38 @@
         type();
     }
 
-    // NUEVA LÓGICA DE ENVÍO (WHATSAPP Y CORREO)
+    // 3. ANIMACIÓN DE TARJETAS AL BAJAR (SCROLL)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    });
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+        card.style.transition = "all 0.6s ease-out";
+        observer.observe(card);
+    });
+
+    // 4. ACTIVAR ICONOS DE REDES SOCIALES
+    window.addEventListener('scroll', () => {
+        const contact = document.getElementById('contacto');
+        const pos = contact.getBoundingClientRect().top;
+        if (pos < window.innerHeight - 100) {
+            contact.classList.add('active');
+        }
+    });
+
+    // 5. ENVÍO DE FORMULARIO
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // REEMPLAZA ESTOS DATOS
-        const miNumero = "5540701518"; // Ejemplo: 5215512345678
-        const formspreeID = "xaqvzprz"; 
-
-        const nombre = document.getElementById('nombre').value;
-        const email = document.getElementById('email').value;
-        const tel = document.getElementById('telefono').value;
-        const mensaje = document.getElementById('mensaje').value;
-
-        // 1. Enviar a Correo vía Formspree
-        fetch(`https://formspree.io/f/${formspreeID}`, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: { 'Accept': 'application/json' }
-        });
-
-        // 2. Enviar a WhatsApp
-        const msjWA = `*Nueva Consulta AserCofi*%0A%0A*Nombre:* ${nombre}%0A*Correo:* ${email}%0A*Tel:* ${tel}%0A*Mensaje:* ${mensaje}`;
-        window.open(`https://wa.me/${miNumero}?text=${msjWA}`, '_blank');
-
-        this.reset();
+        const nom = document.getElementById('nombre').value;
+        const msj = document.getElementById('mensaje').value;
+        window.open(`https://wa.me/5540701518?text=*Gestoría LS*%0A*Nombre:* ${nom}%0A*Trámite:* ${msj}`, '_blank');
     });
 </script>
 
