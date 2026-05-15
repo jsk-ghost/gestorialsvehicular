@@ -1,123 +1,67 @@
-// ==========================================
-// 1. CONTROL DEL PRELOADER Y MÁQUINA DE ESCRIBIR
-// ==========================================
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => { 
-                preloader.style.display = 'none'; 
-            }, 500);
+// 1. ANIMACIÓN PLEXUS (FONDO NARANJA)
+const canvas = document.getElementById('plexus-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function init() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+    }
+    update() {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+        p.update();
+        ctx.fillStyle = '#FF6600';
+        ctx.beginPath(); ctx.arc(p.x, p.y, 1.2, 0, Math.PI*2); ctx.fill();
+        for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 130) {
+                ctx.strokeStyle = `rgba(255, 102, 0, ${1 - dist/130})`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+            }
         }
-        startTypewriter();
+    });
+    requestAnimationFrame(animate);
+}
+
+for(let i=0; i<85; i++) particles.push(new Particle());
+init(); animate();
+window.onresize = init;
+
+// 2. PRELOADER
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.style.display = 'none', 500);
     }, 2000);
 });
 
-function startTypewriter() {
-    const text = "Gestión vehicular corporativa y soluciones eficientes.";
-    const speed = 60;
-    let i = 0;
-    const target = document.getElementById("typewriter");
+// 3. ENVÍO WHATSAPP
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const tel = document.getElementById('telefono').value;
+    const msj = document.getElementById('mensaje').value;
     
-    if (!target) return; // Validación por si no encuentra el elemento
-
-    function type() {
-        if (i < text.length) {
-            target.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-// ==========================================
-// 2. EFECTO DE APARICIÓN AL HACER SCROLL (SCROLL REVEAL)
-// ==========================================
-const observerOptions = {
-    threshold: 0.1
-};
-
-const cardObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-        }
-    });
-}, observerOptions);
-
-// Aplicar animación a todas las tarjetas de servicios de gestoría
-document.querySelectorAll('.card').forEach(card => {
-    card.style.opacity = "0";
-    card.style.transform = "translateY(30px)";
-    card.style.transition = "all 0.6s ease-out";
-    cardObserver.observe(card);
+    const textoWA = `*GESTORÍA LS ÉLITE*%0A*Nombre:* ${nombre}%0A*Email:* ${email}%0A*Tel:* ${tel}%0A*Trámite:* ${msj}`;
+    window.open(`https://wa.me/5540701518?text=${textoWA}`, '_blank');
 });
-
-// ==========================================
-// 3. ACTIVACIÓN DE REDES SOCIALES EN CONTACTO
-// ==========================================
-const contactSection = document.querySelector('.contact');
-
-/* ACTIVACIÓN POR INTERSECTION OBSERVER */
-const contactObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            contactSection.classList.add('active');
-        }
-    });
-}, {
-    threshold: 0.05
-});
-
-if (contactSection) {
-    contactObserver.observe(contactSection);
-}
-
-/* REFUERZO PARA MÓVIL */
-window.addEventListener('scroll', () => {
-    if (contactSection) {
-        const contactTop = contactSection.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-
-        if (contactTop < screenHeight - 120) {
-            contactSection.classList.add('active');
-        }
-    }
-});
-
-// ==========================================
-// 4. LÓGICA DE ENVÍO DE FORMULARIO (FORMSPREE + WHATSAPP)
-// ==========================================
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const miNumero = "5540701518"; 
-        const formspreeID = "xaqvzprz"; 
-
-        const nombre = document.getElementById('nombre').value;
-        const email = document.getElementById('email').value;
-        const tel = document.getElementById('telefono').value;
-        const mensaje = document.getElementById('mensaje').value;
-
-        // Envío asíncrono a Formspree de manera silenciosa
-        fetch(`https://formspree.io/f/${formspreeID}`, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: { 'Accept': 'application/json' }
-        }).catch(error => console.error("Error al enviar a Formspree:", error));
-
-        // Redirección inmediata a WhatsApp con los datos limpios de la gestoría
-        const msjWA = `*Nueva Consulta Gestoría LS*%0A%0A*Cliente/Empresa:* ${nombre}%0A*Correo:* ${email}%0A*Tel:* ${tel}%0A*Trámite:* ${mensaje}`;
-        window.open(`https://wa.me/${miNumero}?text=${msjWA}`, '_blank');
-
-        this.reset();
-    });
-}
-
-console.log("Infraestructura de Gestoría LS cargada correctamente.");

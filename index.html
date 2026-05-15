@@ -3,189 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestoría Vehicular LS | Soluciones Corporativas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Gestoría Vehicular LS | Tramites </title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root { --orange: #FF6600; --bg: #050505; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: white; overflow-x: hidden; }
+
+        /* FONDO ANIMADO */
+        #plexus-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+
+        /* PANTALLA DE CARGA (PRELOADER) */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; transition: 0.8s ease;
+        }
+        .preloader-logo { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; }
+        .preloader-logo span { color: var(--orange); }
+        .loader-bar { width: 200px; height: 2px; background: rgba(255,255,255,0.1); margin-top: 20px; position: relative; overflow: hidden; }
+        .loader-bar::after { content: ''; position: absolute; left: -100%; width: 100%; height: 100%; background: var(--orange); animation: loading 2s infinite; }
+        @keyframes loading { 100% { left: 100%; } }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed; top: 0; width: 100%; height: 70px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; background: rgba(0,0,0,0.8); backdrop-filter: blur(15px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo { font-weight: 900; font-size: 1.2rem; }
+        .logo span { color: var(--orange); font-size: 0.7rem; display: block; font-weight: 400; letter-spacing: 2px; }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.8rem; font-weight: 700; }
+        .nav-cta { background: var(--orange); padding: 8px 15px; border-radius: 2px; }
+
+        /* HERO */
+        .hero { height: 100vh; display: flex; align-items: center; padding: 0 8%; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; line-height: 0.9; letter-spacing: -3px; }
+        .highlight { color: var(--orange); }
+        .hero-content p { margin: 20px 0; color: rgba(255,255,255,0.6); max-width: 500px; }
+        .btn-primary { background: var(--orange); color: white; text-decoration: none; padding: 15px 30px; font-weight: 900; display: inline-block; border-radius: 2px; }
+
+        /* SERVICIOS VISIBLES */
+        .services { padding: 100px 8%; position: relative; }
+        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 50px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 4px; transition: 0.3s; }
+        .card:hover { border-color: var(--orange); background: rgba(255,102,0,0.05); }
+        .card i { color: var(--orange); font-size: 2rem; margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; font-weight: 700; }
+        .card p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+
+        /* FORMULARIO */
+        .contact { padding: 100px 8%; display: flex; justify-content: center; }
+        .contact-card { background: #111; border: 1px solid var(--orange); padding: 40px; width: 100%; max-width: 600px; border-radius: 4px; }
+        .input-group { margin-bottom: 20px; }
+        .input-group input, .input-group textarea { width: 100%; padding: 15px; background: #222; border: 1px solid #333; color: white; border-radius: 2px; }
+        .btn-submit { width: 100%; background: var(--orange); color: white; border: none; padding: 18px; font-weight: 900; cursor: pointer; }
+    </style>
 </head>
 <body>
 
+<canvas id="plexus-canvas"></canvas>
+
 <div id="preloader">
-    <div class="preloader-content">
-        <h2 class="preloader-logo">GESTORÍA<span>LS</span></h2>
-        <div class="loader-bar"></div>
-    </div>
+    <div class="preloader-logo">GESTORÍA<span>LS</span></div>
+    <div class="loader-bar"></div>
 </div>
 
 <nav class="navbar">
-    <div class="logo">GESTORÍA<span>LS</span></div>
+    <div class="logo">GESTORÍA<span>LS VEHICULAR</span></div>
     <ul class="nav-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#contacto" class="nav-cta">Agendar Trámite</a></li>
+        <li><a href="#servicios">SERVICIOS</a></li>
+        <li><a href="#contacto" class="nav-cta">CONTACTO</a></li>
     </ul>
 </nav>
 
-<section id="inicio" class="hero">
-    <div class="stars"></div>
-    <div class="aurora-container">
-        <div class="aurora-layer green-sway"></div>
-        <div class="aurora-layer purple-flow"></div>
-        <div class="aurora-layer blue-drift"></div>
-    </div>
-
+<section class="hero">
     <div class="hero-content">
-        <h1 id="typewriter"></h1>
-        <p>Soluciones logísticas para flotillas, empresas y particulares.</p>
-        <a href="#contacto" class="btn-primary">Iniciar trámite</a>
+        <h1>Gestoria <br><span class="highlight"> Vehicular</span></h1>
+        <p>Soluciones rapidas y efectivas para trámites vehiculares .</p>
+        <a href="#servicios" class="btn-primary">CONOCENOS</a>
     </div>
-
-    <a href="#servicios" class="scroll-indicator">
-        <div class="arrow"></div>
-    </a>
 </section>
 
 <section id="servicios" class="services">
-    <h2 class="section-title">Servicios Integrales</h2>
-    <div class="services-particles"></div>
+    <h2 class="section-title">NUESTROS SERVICIOS</h2>
     <div class="grid">
         <div class="card">
-            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 15px;">
-                <i class="fas fa-truck-moving"></i>
-            </div>
-            <h3>Vehículos de Carga</h3>
-            <p>Altas, bajas y permisos de ruta para transporte pesado.</p>
+            <i class="fas fa-truck"></i>
+            <h3>Carga Federal</h3>
+            <p>Permisos SCT, altas y bajas de unidades pesadas.</p>
         </div>
         <div class="card">
-            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 15px;">
-                <i class="fas fa-leaf"></i>
-            </div>
-            <h3>Trámites Ambientales</h3>
-            <p>Gestión de verificaciones y hologramas exentos.</p>
+            <i class="fas fa-file-invoice"></i>
+            <h3>Ambiental</h3>
+            <p>Verificaciones y hologramas para empresas.</p>
         </div>
         <div class="card">
-            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 15px;">
-                <i class="fas fa-id-card"></i>
-            </div>
+            <i class="fas fa-id-card"></i>
             <h3>Placas</h3>
-            <p>Emplacamiento nuevo, cambios de entidad y altas comerciales.</p>
-        </div>
-        <div class="card">
-            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 15px;">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <h3>Validación Jurídica</h3>
-            <p>Liberación de adeudos y dictámenes de estatus legal.</p>
+            <p>Gestión masiva de emplacamiento comercial.</p>
         </div>
     </div>
 </section>
 
 <section id="contacto" class="contact">
-    <div class="contact-aurora">
-        <div class="contact-glow blue"></div>
-        <div class="contact-glow purple"></div>
-    </div>
-
     <div class="contact-card">
-        <div class="contact-badge">Atención Profesional</div>
-        <h2>Inicie su gestión</h2>
-        <p class="contact-subtext">Optimice los tiempos de su negocio delegando sus trámites.</p>
-
-        <form class="contact-form" id="contactForm">
-            <div class="input-group">
-                <input type="text" id="nombre" required placeholder=" ">
-                <label>Nombre o Razón Social</label>
-            </div>
-            <div class="input-group">
-                <input type="email" id="email" required placeholder=" ">
-                <label>Correo electrónico</label>
-            </div>
-            <div class="input-group">
-                <input type="tel" id="telefono" required placeholder=" ">
-                <label>Teléfono</label>
-            </div>
-            <textarea id="mensaje" placeholder="Detalle su trámite..." rows="4"></textarea>
-            <button type="submit" class="btn-submit">Solicitar Gestión</button>
+        <h2 style="margin-bottom: 20px;">CONTACTO</h2>
+        <form id="contactForm">
+            <div class="input-group"><input type="text" id="nombre" placeholder="Nombre / Empresa" required></div>
+            <div class="input-group"><input type="tel" id="tel" placeholder="Teléfono" required></div>
+            <div class="input-group"><textarea id="msj" placeholder="Trámite a realizar" rows="4"></textarea></div>
+            <button type="submit" class="btn-submit">ENVIAR A WHATSAPP</button>
         </form>
-
-        <div class="social-links">
-            <a href="https://wa.me/5540701518" target="_blank" class="social-icon whatsapp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="#" target="_blank" class="social-icon facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-        </div>
     </div>
 </section>
 
-<footer class="footer">
-    <p>&copy; 2026 Gestoría LS. Todos los derechos reservados.</p>
-</footer>
-
 <script>
-    // 1. QUITAR PANTALLA DE CARGA
+    // FONDO
+    const canvas = document.getElementById('plexus-canvas');
+    const ctx = canvas.getContext('2d');
+    let pts = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.onresize = resize; resize();
+    class Pt {
+        constructor() { this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.vx = (Math.random()-0.5)*0.5; this.vy = (Math.random()-0.5)*0.5; }
+        update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>canvas.width) this.vx*=-1; if(this.y<0||this.y>canvas.height) this.vy*=-1; }
+    }
+    for(let i=0;i<70;i++) pts.push(new Pt());
+    function draw() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        pts.forEach((p,i)=>{
+            p.update(); ctx.fillStyle = '#FF6600'; ctx.beginPath(); ctx.arc(p.x,p.y,1.5,0,Math.PI*2); ctx.fill();
+            for(let j=i+1;j<pts.length;j++){
+                let d = Math.hypot(p.x-pts[j].x, p.y-pts[j].y);
+                if(d<150) { ctx.strokeStyle=`rgba(255,102,0,${1-d/150})`; ctx.lineWidth=0.5; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); }
+            }
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+
+    // PRELOADER (QUITAR PANTALLA NEGRA)
     window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
         setTimeout(() => {
+            const preloader = document.getElementById('preloader');
             preloader.style.opacity = '0';
-            setTimeout(() => { 
-                preloader.style.display = 'none'; 
-                startTypewriter(); // Empieza las letras cuando se va el negro
-            }, 500);
+            setTimeout(() => preloader.style.display = 'none', 800);
         }, 2000);
     });
 
-    // 2. EFECTO LETRAS MÁQUINA DE ESCRIBIR
-    function startTypewriter() {
-        const text = "Gestión vehicular corporativa y soluciones eficientes.";
-        const speed = 60;
-        let i = 0;
-        const target = document.getElementById("typewriter");
-        function type() {
-            if (i < text.length) {
-                target.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        type();
-    }
-
-    // 3. ANIMACIÓN DE TARJETAS AL BAJAR (SCROLL)
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
-        });
-    });
-
-    document.querySelectorAll('.card').forEach(card => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(30px)";
-        card.style.transition = "all 0.6s ease-out";
-        observer.observe(card);
-    });
-
-    // 4. ACTIVAR ICONOS DE REDES SOCIALES
-    window.addEventListener('scroll', () => {
-        const contact = document.getElementById('contacto');
-        const pos = contact.getBoundingClientRect().top;
-        if (pos < window.innerHeight - 100) {
-            contact.classList.add('active');
-        }
-    });
-
-    // 5. ENVÍO DE FORMULARIO
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // WHATSAPP
+    document.getElementById('contactForm').onsubmit = (e) => {
         e.preventDefault();
-        const nom = document.getElementById('nombre').value;
-        const msj = document.getElementById('mensaje').value;
-        window.open(`https://wa.me/5540701518?text=*Gestoría LS*%0A*Nombre:* ${nom}%0A*Trámite:* ${msj}`, '_blank');
-    });
+        const n = document.getElementById('nombre').value;
+        const t = document.getElementById('tel').value;
+        const m = document.getElementById('msj').value;
+        window.open(`https://wa.me/5540701518?text=*GESTORÍA LS*%0A*Nombre:* ${n}%0A*Tel:* ${t}%0A*Trámite:* ${m}`, '_blank');
+    };
 </script>
-
 </body>
 </html>
