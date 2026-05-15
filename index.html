@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AserCofi | Despacho Contable</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="preloader">
+    <div class="preloader-content">
+        <h2 class="preloader-logo">ASER<span>COFI</span></h2>
+        <div class="loader-bar"></div>
+    </div>
+</div>
+
+<nav class="navbar">
+    <div class="logo">ASER<span>COFI</span></div>
+    <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto" class="nav-cta">Agendar Asesoría</a></li>
+    </ul>
+</nav>
+
+<section id="inicio" class="hero">
+    <div class="stars"></div>
+    <div class="aurora-container">
+        <div class="aurora-layer green-sway"></div>
+        <div class="aurora-layer purple-flow"></div>
+        <div class="aurora-layer blue-drift"></div>
+    </div>
+
+    <div class="hero-content">
+        <h1 id="typewriter"></h1>
+        <p>Estrategia fiscal de alto nivel para tu negocio.</p>
+        <a href="#contacto" class="btn-primary">Empezar ahora</a>
+    </div>
+
+    <a href="#servicios" class="scroll-indicator">
+        <div class="arrow"></div>
+    </a>
+</section>
+
+<section id="servicios" class="services">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="services-particles"></div>
+    <div class="grid">
+        <div class="card">
+            <h3>Contabilidad General</h3>
+            <p>Gestión financiera impecable para tu tranquilidad.</p>
+        </div>
+        <div class="card">
+            <h3>Estrategia Fiscal</h3>
+            <p>Optimización de impuestos cumpliendo la ley.</p>
+        </div>
+        <div class="card">
+            <h3>Nóminas</h3>
+            <p>Administración eficiente de tu equipo de trabajo.</p>
+        </div>
+        <div class="card">
+            <h3>Auditoría</h3>
+            <p>Revisión profunda para un crecimiento seguro.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contacto" class="contact">
+    <div class="contact-aurora">
+        <div class="contact-glow blue"></div>
+        <div class="contact-glow purple"></div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-badge">Asesoría Gratuita</div>
+        <h2>Obtén tu asesoría</h2>
+        <p class="contact-subtext">Impulsa tu negocio con soluciones contables y fiscales inteligentes.</p>
+
+        <form class="contact-form" id="contactForm">
+            <div class="input-group">
+                <input type="text" name="nombre" id="nombre" required placeholder=" ">
+                <label>Nombre completo</label>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" id="email" required placeholder=" ">
+                <label>Correo electrónico</label>
+            </div>
+            <div class="input-group">
+                <input type="tel" name="telefono" id="telefono" required placeholder=" ">
+                <label>Teléfono</label>
+            </div>
+            <textarea name="mensaje" id="mensaje" placeholder="Cuéntanos qué necesitas" rows="4"></textarea>
+            <button type="submit" class="btn-submit">Solicitar Asesoría</button>
+        </form>
+
+        <div class="social-links active-socials">
+            <a href="https://wa.me/tu-numero" target="_blank" class="social-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" target="_blank" class="social-icon facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2026 AserCofi. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
+            startTypewriter();
+        }, 2000);
+    });
+
+    function startTypewriter() {
+        const text = "Contabilidad inteligente y soluciones.";
+        const speed = 70;
+        let i = 0;
+        const target = document.getElementById("typewriter");
+        function type() {
+            if (i < text.length) {
+                target.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+        type();
+    }
+
+    // NUEVA LÓGICA DE ENVÍO (WHATSAPP Y CORREO)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // REEMPLAZA ESTOS DATOS
+        const miNumero = "5540701518"; // Ejemplo: 5215512345678
+        const formspreeID = "xaqvzprz"; 
+
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        const tel = document.getElementById('telefono').value;
+        const mensaje = document.getElementById('mensaje').value;
+
+        // 1. Enviar a Correo vía Formspree
+        fetch(`https://formspree.io/f/${formspreeID}`, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: { 'Accept': 'application/json' }
+        });
+
+        // 2. Enviar a WhatsApp
+        const msjWA = `*Nueva Consulta AserCofi*%0A%0A*Nombre:* ${nombre}%0A*Correo:* ${email}%0A*Tel:* ${tel}%0A*Mensaje:* ${mensaje}`;
+        window.open(`https://wa.me/${miNumero}?text=${msjWA}`, '_blank');
+
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
