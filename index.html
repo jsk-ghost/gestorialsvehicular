@@ -3,147 +3,481 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestoría Vehicular LS | Tramites </title>
-    
+    <title>Gestoría Vehicular LS | Tramites</title>
+
     <!-- TIPOGRAFÍA INTER -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- TIPOGRAFÍA ROBOTO (Google style) -->
+
+    <!-- TIPOGRAFÍA ROBOTO -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;900&display=swap" rel="stylesheet">
-    
+
     <!-- ICONOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- TU CSS AQUÍ -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <canvas id="plexus-canvas"></canvas>
 
+<!-- PRELOADER -->
 <div id="preloader">
-  <div class="preloader-logo">GESTORÍA <span>LS</span></div>
-  <div class="loader-circle"></div>
-  <p class="loader-text">Cargando experiencia...</p>
+    <div class="preloader-logo">
+        GESTORÍA <span>LS</span>
+    </div>
+
+    <div class="loader-circle"></div>
+
+    <p class="loader-text">
+        Cargando experiencia...
+    </p>
 </div>
 
-
+<!-- NAVBAR -->
 <nav class="navbar">
-    <div class="logo">GESTORÍA<span>LS VEHICULAR</span></div>
+
+    <div class="logo">
+        GESTORÍA
+        <span>LS VEHICULAR</span>
+    </div>
+
     <ul class="nav-links">
         <li><a href="#servicios">SERVICIOS</a></li>
+        <li><a href="#redes">REDES</a></li>
         <li><a href="#contacto" class="nav-cta">CONTACTO</a></li>
     </ul>
+
 </nav>
 
+<!-- HERO -->
 <section class="hero">
+
     <div class="hero-content">
-        <h1>Gestoria <br><span class="highlight"> Vehicular</span></h1>
-        <p>Soluciones rápidas y efectivas para trámites vehiculares.</p>
-        <a href="#servicios" class="btn-primary">CONÓCENOS</a>
+
+        <h1>
+            Gestoria
+            <br>
+            <span class="highlight">Vehicular</span>
+        </h1>
+
+        <p>
+            Soluciones rápidas y efectivas para trámites vehiculares.
+        </p>
+
+        <a href="#servicios" class="btn-primary">
+            CONÓCENOS
+        </a>
+
     </div>
+
 </section>
 
+<!-- SERVICIOS -->
 <section id="servicios" class="services">
-    <h2 class="section-title">NUESTROS SERVICIOS</h2>
+
+    <h2 class="section-title">
+        NUESTROS SERVICIOS
+    </h2>
+
     <div class="grid">
+
         <div class="card">
             <i class="fas fa-truck"></i>
             <h3>Carga Federal</h3>
-            <p>Permisos SCT, altas y bajas de unidades pesadas.</p>
+            <p>
+                Permisos SCT, altas y bajas de unidades pesadas.
+            </p>
         </div>
+
         <div class="card">
             <i class="fas fa-file-invoice"></i>
             <h3>Ambiental</h3>
-            <p>Verificaciones y hologramas para empresas.</p>
+            <p>
+                Verificaciones y hologramas para empresas.
+            </p>
         </div>
+
         <div class="card">
             <i class="fas fa-id-card"></i>
             <h3>Placas</h3>
-            <p>Gestión masiva de emplacamiento comercial.</p>
+            <p>
+                Gestión masiva de emplacamiento comercial.
+            </p>
         </div>
+
     </div>
+
 </section>
 
+<!-- REDES -->
+<section id="redes" class="social-section">
+
+    <h2 class="section-title">
+        NUESTRAS REDES
+    </h2>
+
+    <div class="social-cards">
+
+        <a href="https://www.facebook.com/profile.php?id=61573630156822"
+           target="_blank"
+           class="social-circle">
+
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+
+        </a>
+
+        <a href="https://wa.me/5540701518"
+           target="_blank"
+           class="social-circle">
+
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+
+        </a>
+
+        <a href="mailto:gestorialsmexico@outlook.com"
+           class="social-circle">
+
+            <i class="fas fa-envelope"></i>
+            <span>Correo</span>
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- CONTACTO -->
 <section id="contacto" class="contact">
+
     <div class="contact-card">
+
         <div class="contact-header">
-            <h2>INICIAR <span class="highlight">DESPLIEGUE</span></h2>
-            <p>Soporte técnico especializado 24/7</p>
+
+            <h2>
+                CONTACTANOS
+                <span class="highlight">AHORA</span>
+            </h2>
+
+            <p>
+                Soporte técnico y atención 24/7
+            </p>
+
         </div>
-        
-        <form id="contactForm" class="elite-form">
+
+        <!-- FORMULARIO -->
+        <form
+            id="contactForm"
+            class="elite-form"
+            action="https://formspree.io/f/xrejnrol"
+            method="POST"
+        >
 
             <div class="input-field">
-                <input type="text" id="nombre" required placeholder=" ">
-                <label for="nombre">Nombre o Razón Social</label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                    placeholder=" "
+                >
+
+                <label for="nombre">
+                    Nombre o Razón Social
+                </label>
+
                 <span class="focus-border"></span>
+
             </div>
 
             <div class="input-field">
-                <input type="tel" id="tel" required placeholder=" ">
-                <label for="tel">Teléfono de Enlace</label>
+
+                <input
+                    type="tel"
+                    id="tel"
+                    name="telefono"
+                    required
+                    placeholder=" "
+                >
+
+                <label for="tel">
+                    Teléfono de Enlace
+                </label>
+
                 <span class="focus-border"></span>
+
             </div>
 
             <div class="input-field">
-                <textarea id="msj" required placeholder=" "></textarea>
-                <label for="msj">Especificaciones del Trámite</label>
+
+                <textarea
+                    id="msj"
+                    name="mensaje"
+                    required
+                    placeholder=" "
+                ></textarea>
+
+                <label for="msj">
+                    Especificaciones del Trámite
+                </label>
+
                 <span class="focus-border"></span>
+
             </div>
 
             <button type="submit" class="btn-elite">
-                <span>ENVIAR SOLICITUD</span>
+
+                <span>Contactar</span>
+
                 <svg viewBox="0 0 24 24" width="18" height="18">
-                    <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    <path
+                        fill="currentColor"
+                        d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
+                    />
                 </svg>
+
             </button>
 
         </form>
+
+        <!-- REDES INFERIORES -->
+        <div class="social-media">
+
+            <h3>Síguenos en redes</h3>
+
+            <div class="social-icons">
+
+                <a href="https://www.facebook.com/profile.php?id=61573630156822"
+                   target="_blank">
+
+                    <i class="fab fa-facebook-f"></i>
+
+                </a>
+
+                <a href="https://wa.me/5540701518"
+                   target="_blank">
+
+                    <i class="fab fa-whatsapp"></i>
+
+                </a>
+
+                <a href="mailto:gestorialsmexico@outlook.com">
+
+                    <i class="fas fa-envelope"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
+
 </section>
 
+<!-- JAVASCRIPT -->
 <script>
-    // FONDO
+
+    // ===== FONDO =====
+
     const canvas = document.getElementById('plexus-canvas');
     const ctx = canvas.getContext('2d');
+
     let pts = [];
-    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    window.onresize = resize; resize();
+
+    function resize() {
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+    }
+
+    window.onresize = resize;
+
+    resize();
+
     class Pt {
-        constructor() { this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.vx = (Math.random()-0.5)*0.5; this.vy = (Math.random()-0.5)*0.5; }
-        update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>canvas.width) this.vx*=-1; if(this.y<0||this.y>canvas.height) this.vy*=-1; }
-    }
-    for(let i=0;i<70;i++) pts.push(new Pt());
-    function draw() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        pts.forEach((p,i)=>{
-            p.update(); ctx.fillStyle = '#FF6600'; ctx.beginPath(); ctx.arc(p.x,p.y,1.5,0,Math.PI*2); ctx.fill();
-            for(let j=i+1;j<pts.length;j++){
-                let d = Math.hypot(p.x-pts[j].x, p.y-pts[j].y);
-                if(d<150) { ctx.strokeStyle=`rgba(255,102,0,${1-d/150})`; ctx.lineWidth=0.5; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); }
+
+        constructor() {
+
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = (Math.random() - 0.5) * 0.5;
+
+        }
+
+        update() {
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            if(this.x < 0 || this.x > canvas.width) {
+                this.vx *= -1;
             }
-        });
-        requestAnimationFrame(draw);
+
+            if(this.y < 0 || this.y > canvas.height) {
+                this.vy *= -1;
+            }
+
+        }
+
     }
+
+    for(let i = 0; i < 70; i++) {
+
+        pts.push(new Pt());
+
+    }
+
+    function draw() {
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        pts.forEach((p, i) => {
+
+            p.update();
+
+            ctx.fillStyle = '#FF6600';
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            for(let j = i + 1; j < pts.length; j++) {
+
+                let d = Math.hypot(
+                    p.x - pts[j].x,
+                    p.y - pts[j].y
+                );
+
+                if(d < 150) {
+
+                    ctx.strokeStyle =
+                    `rgba(255,102,0,${1 - d / 150})`;
+
+                    ctx.lineWidth = 0.5;
+
+                    ctx.beginPath();
+
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(pts[j].x, pts[j].y);
+
+                    ctx.stroke();
+
+                }
+
+            }
+
+        });
+
+        requestAnimationFrame(draw);
+
+    }
+
     draw();
 
-    // PRELOADER
+    // ===== PRELOADER =====
+
     window.addEventListener('load', () => {
+
         setTimeout(() => {
-            const preloader = document.getElementById('preloader');
+
+            const preloader =
+            document.getElementById('preloader');
+
             preloader.style.opacity = '0';
-            setTimeout(() => preloader.style.display = 'none', 800);
+
+            setTimeout(() => {
+
+                preloader.style.display = 'none';
+
+            }, 800);
+
         }, 2000);
+
     });
 
-    // WHATSAPP
-    document.getElementById('contactForm').onsubmit = (e) => {
-        e.preventDefault();
-        const n = document.getElementById('nombre').value;
-        const t = document.getElementById('tel').value;
-        const m = document.getElementById('msj').value;
-        window.open(`https://wa.me/5540701518?text=*GESTORÍA LS*%0A*Nombre:* ${n}%0A*Tel:* ${t}%0A*Trámite:* ${m}`, '_blank');
-    };
+    // ===== FORMULARIO =====
+
+    const form =
+    document.getElementById('contactForm');
+
+    if(form){
+
+        form.addEventListener('submit', async (e) => {
+
+            e.preventDefault();
+
+            const n =
+            document.getElementById('nombre').value;
+
+            const t =
+            document.getElementById('tel').value;
+
+            const m =
+            document.getElementById('msj').value;
+
+            const formData = new FormData(form);
+
+            try {
+
+                const response = await fetch(
+                    form.action,
+                    {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }
+                );
+
+                if(response.ok){
+
+                    const textoWA =
+`*GESTORÍA LS*%0A
+*Nombre:* ${n}%0A
+*Tel:* ${t}%0A
+*Trámite:* ${m}`;
+
+                    window.open(
+                        `https://wa.me/5540701518?text=${textoWA}`,
+                        '_blank'
+                    );
+
+                    alert(
+                        'Solicitud enviada correctamente'
+                    );
+
+                    form.reset();
+
+                } else {
+
+                    alert(
+                        'Error enviando formulario'
+                    );
+
+                }
+
+            } catch(error){
+
+                alert(
+                    'Error al enviar solicitud'
+                );
+
+            }
+
+        });
+
+    }
+
 </script>
+
 </body>
 </html>

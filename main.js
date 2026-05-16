@@ -74,13 +74,57 @@ window.addEventListener('load', () => {
 
 // Formulario de WhatsApp
 const form = document.getElementById('contactForm');
-if(form) {
-    form.onsubmit = (e) => {
+
+if(form){
+
+    form.addEventListener('submit', async (e) => {
+
         e.preventDefault();
+
         const n = document.getElementById('nombre').value;
         const t = document.getElementById('tel').value;
         const m = document.getElementById('msj').value;
-        const textoWA = `*GESTORÍA LS*%0A*Nombre:* ${n}%0A*Tel:* ${t}%0A*Trámite:* ${m}`;
-        window.open(`https://wa.me/5540701518?text=${textoWA}`, '_blank');
-    };
+
+        const formData = new FormData(form);
+
+        try {
+
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if(response.ok){
+
+                // ===== ABRIR WHATSAPP =====
+                const textoWA =
+`*GESTORÍA LS*%0A
+*Nombre:* ${n}%0A
+*Tel:* ${t}%0A
+*Trámite:* ${m}`;
+
+                window.open(
+                    `https://wa.me/5540701518?text=${textoWA}`,
+                    '_blank'
+                );
+
+                form.reset();
+
+            } else {
+
+                alert('Error enviando formulario');
+
+            }
+
+        } catch(error){
+
+            alert('Error al enviar solicitud');
+
+        }
+
+    });
+
 }
