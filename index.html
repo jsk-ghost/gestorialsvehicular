@@ -12,7 +12,16 @@
         body { background: var(--bg); color: white; overflow-x: hidden; }
 
         /* FONDO ANIMADO */
-        #plexus-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+       #plexus-canvas {
+    position: fixed; /* OJO: Debe ser FIXED */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none; /* Para que no interfiera con los clics en el formulario */
+    background: #050505;
+}
 
         /* PANTALLA DE CARGA (PRELOADER) */
         #preloader {
