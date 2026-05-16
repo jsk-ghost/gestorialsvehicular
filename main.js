@@ -62,17 +62,15 @@ initCanvas();
 animate();
 
 // Lógica del Preloader
+// NUEVO PRELOADER
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if(preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 600);
-        }
-    }, 1500);
+  setTimeout(() => {
+    const preloader = document.getElementById('preloader');
+    preloader.style.opacity = '0';
+    setTimeout(() => preloader.style.display = 'none', 800);
+  }, 2000); // tiempo visible antes de desaparecer
 });
+
 
 // Formulario de WhatsApp
 const form = document.getElementById('contactForm');
